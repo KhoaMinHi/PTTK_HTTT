@@ -16,5 +16,15 @@ namespace TRUNGTAMTINHOC
         {
             InitializeComponent();
         }
+
+        private void buttonXemHocPhi_Click(object sender, EventArgs e)
+        {
+            if (textBoxIDHocVienHocPhi.Text == "")
+            {
+                MessageBox.Show("Vui long nhap ID hoc vien!");
+                return;
+            }
+            dataGridViewXemHocPhi.DataSource = TangNghiepVu.HocPhi.getHocPhi(Convert.ToInt32(textBoxIDHocVienHocPhi.Text));
+        }
     }
 }

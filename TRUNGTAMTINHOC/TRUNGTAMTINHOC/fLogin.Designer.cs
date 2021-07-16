@@ -133,7 +133,7 @@ namespace TRUNGTAMTINHOC
             this.txbPassword.Name = "txbPassword";
             this.txbPassword.Size = new System.Drawing.Size(254, 22);
             this.txbPassword.TabIndex = 2;
-            this.txbPassword.Text = "KJPAMI";
+            this.txbPassword.Text = "1";
             this.txbPassword.UseSystemPasswordChar = true;
             this.txbPassword.UseWaitCursor = true;
             // 
@@ -163,7 +163,7 @@ namespace TRUNGTAMTINHOC
             this.txbUserName.Name = "txbUserName";
             this.txbUserName.Size = new System.Drawing.Size(254, 22);
             this.txbUserName.TabIndex = 1;
-            this.txbUserName.Text = "SYS";
+            this.txbUserName.Text = "HOCVIEN";
             this.txbUserName.UseWaitCursor = true;
             // 
             // label1

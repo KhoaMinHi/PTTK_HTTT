@@ -22,25 +22,17 @@ namespace TRUNGTAMTINHOC
         {
             try
             {
-                //xu ly login vao mot user
-                string nameandpass = comboBoxServiceName.Text + ";DBA Privilege = SYSDBA; User Id=" + this.txbUserName.Text + "; Password=" + this.txbPassword.Text;//User Id = c##bv_schema;Password=bv_schema;";
-                TruyCapDB.ConnStr = "DATA SOURCE=localhost:1521/" + nameandpass;
-                string vaitro = "";
-                //TruyCapDB dataPro = new TruyCapDB();
-                //int result = dataPro.ExecuteParameterNonQuery("select * from dual");
-                string query = "select username from dba_users where username = '" + txbUserName.Text + "'";
-                int result = TruyCapDB.Instance.ExecuteParameterQuery(query).Rows.Count;
-
-                //MessageBox.Show(TruyCapDB.Instance.ExecuteScalar("SELECT SYS_CONTEXT ('USERENV', 'SESSION_USER') FROM DUAL").ToString());
-
-                if (result <= 0)
+                //Kiem tra DB co user khong
+                TangNghiepVu.UserLogin userlogin = new TangNghiepVu.UserLogin(comboBoxServiceName.Text, txbUserName.Text, txbPassword.Text);
+                bool hasuser = TangNghiepVu.UserLogin.isUser(userlogin);
+                if (hasuser == false)
                 {
                     MessageBox.Show("Sai tai khoan hoac mat khau!");
                     return;
                 }
 
-
-                if (txbUserName.Text == "SYS" && TruyCapDB.Instance.ExecuteScalar("SELECT SYS_CONTEXT ('USERENV', 'SESSION_USER') FROM DUAL").ToString() == "SYS")
+                //Kiem tra connection co phai muon ket noi den user SYS
+                if (txbUserName.Text == "SYS" && TangNghiepVu.UserLogin.getLoginedUserName() == "SYS")
                 {
                     fAdmin fadmin = new fAdmin();
                     this.Hide();
@@ -49,16 +41,9 @@ namespace TRUNGTAMTINHOC
                     return;
                 }
 
-                //Lấy vai trò để điều khiển truy cập vào form tương ứng
-                //query = "select vaitro from bv_schema.nhanvien where tennv = '" + txbUserName.Text + "'";
-                //vaitro = TruyCapDB.Instance.ExecuteScalar(query).ToString();
-                vaitro = txbUserName.Text;
-                //Change sys connection to user connection
-                //TruyCapDB.Instance.ExecuteParameterNonQuery("disconnect");
-                //nameandpass = comboBoxServiceName.Text + ";" + " User Id=" + this.txbUserName.Text + "; Password=" + this.txbPassword.Text;//User Id = c##bv_schema;Password=bv_schema;";
-                //TruyCapDB.ConnStr = "DATA SOURCE=localhost:1521/" + nameandpass;
-                //if (TruyCapDB.Instance.ExecuteScalar("SELECT SYS_CONTEXT ('USERENV', 'SESSION_USER') FROM DUAL").ToString() != "0")
-                //{
+                //Đoạn này tui không check nguoi dung, kiểu không làm giống môn ATBM. Làm như này cho nó tiện.
+                string vaitro = txbUserName.Text;
+                
                     switch (vaitro)
                     {
                         case "GIAOVU":
