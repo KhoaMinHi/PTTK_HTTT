@@ -77,6 +77,9 @@
     <Compile Include="fThungan.Designer.cs">
       <DependentUpon>fThungan.cs</DependentUpon>
     </Compile>
+    <Compile Include="TangDB\DangKyXemLopMonHocDB.cs" />
+    <Compile Include="TangDB\HOCVIENXEMDIEMDB.cs" />
+    <Compile Include="TangDB\MoLopMonHocDB.cs" />
     <Compile Include="TangDB\TruyCapDB.cs" />
     <Compile Include="fAdmin.cs">
       <SubType>Form</SubType>
@@ -94,10 +97,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TangDB\UserLoginDB.cs" />
     <Compile Include="TangDB\XemHocPhiDB.cs" />
+    <Compile Include="TangNghiepVu\DangKyXemLopMonHoc.cs" />
+    <Compile Include="TangNghiepVu\HOCVIENXEMDIEM.cs" />
+    <Compile Include="TangNghiepVu\MoLopMonHoc.cs" />
     <Compile Include="TangNghiepVu\UserLogin.cs" />
     <Compile Include="TangNghiepVu\HocPhi.cs" />
     <EmbeddedResource Include="fAdmin.resx">
       <DependentUpon>fAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fGiaovu.resx">
+      <DependentUpon>fGiaovu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fHocvien.resx">
       <DependentUpon>fHocvien.cs</DependentUpon>
